@@ -10,3 +10,4 @@ namespace ProductCatalog.Controllers
         }
     }
 }
+// This code defines a simple ASP.NET Core MVC controller named ProductCatalogController.
