@@ -12,6 +12,9 @@
         public string SKU { get; private set; }
         public string AvaiabilityStatus { get; private set; }
         public double CustomerRating { get; private set; }
+
+        private Product() { }
+
         public Product(int id, string name, string description, decimal price, int stockQuantity, 
                        string brand, string category, string sku, string availabilityStatus, double customerRating)
         {
