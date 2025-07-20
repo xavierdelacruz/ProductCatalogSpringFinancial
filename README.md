@@ -7,10 +7,12 @@
 1. 📦 Prerequisites
 Visual Studio 2022
 .NET 8 SDK
-PostgreSQL or Docker
+PostgreSQL with Docker
 
 2. 🐳 Run PostgreSQL with Docker (Recommended)
-Create a docker-compose.yml at the root:
+Install Docker for Windows (or your preferred OS)
+
+Create a docker-compose.yml at the root (it should have been commited already):
 
 ```
 services:
