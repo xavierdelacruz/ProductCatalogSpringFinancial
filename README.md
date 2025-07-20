@@ -52,9 +52,12 @@ Make sure the following file exists:
 Then run:
 
 # Apply migration
+```
 cd ProductCatalog
+```
 
-```dotnet ef database update \
+```
+dotnet ef database update \
   --project ProductCatalog.Infrastructure \
   --startup-project ProductCatalog.API \
   --context CatalogDbContext
@@ -73,6 +76,7 @@ Open Swagger UI:
 https://localhost:7105/swagger
 
 📬 API Endpoints
+```
 POST
 /api/products/generate?count=1000
 Generates fake products
@@ -84,11 +88,14 @@ Returns paginated list of products
 GET
 /api/products/search?q=term
 Filters products dynamically
+```
 
 🧪 Run Tests
 Unit tests are in ProductCatalog.Tests using EF InMemory:
+```
 cd ProductCatalog.Tests
 dotnet test
+```
 
 💡 Notes
 Follows clean architecture: API → Application → Domain + Infrastructure
