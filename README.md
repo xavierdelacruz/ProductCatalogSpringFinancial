@@ -9,8 +9,8 @@ This backend is part of the Dynamic Product Catalog Filter project, built using 
 - .NET 8 SDK
 - PostgreSQL with Docker
 
-2. Open Visual Studio. Open the terminal, and run PostgreSQL with Docker (Recommended)
-
+2. Opening the project:
+- Open Visual Studio Code 2022, and you can choose to clone directly from the repo, or open the .sln file locally.
 - Install Docker for Windows (or your preferred OS)
 - Create a docker-compose.yml at the root (it should have been commited already):
 
@@ -31,7 +31,7 @@ volumes:
     pgdata:
 ```
 
-Start container:
+- Start container:
 ```
 docker compose up -d
 ```
@@ -59,15 +59,13 @@ dotnet ef database update \
   --context CatalogDbContext
 ```
 
-## Run the API
+5 Run the API
 
-```
-dotnet run --project ProductCatalog.API
-```
-OR ```In Visual Studio 2022, run ProductCatalog.API with https```
+```dotnet run --project ProductCatalog.API```
+OR 
+```In Visual Studio 2022, run ProductCatalog.API with https selected```
 
 Open Swagger UI:
-
 ```https://localhost:7105/swagger```
 
 API Endpoints
