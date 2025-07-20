@@ -88,6 +88,7 @@ Filters products dynamically
 ```
 
 - Swagger's UI should show this when run:
+
 ![alt text](image-1.png)
 
 ## Run Tests
