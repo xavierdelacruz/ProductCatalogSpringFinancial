@@ -1,15 +1,18 @@
-🛠
+# Product Catalog Spring Financial
+
 This backend is part of the Dynamic Product Catalog Filter project, built using a clean Domain-Driven Design (DDD) architecture with .NET 8 Web API, Entity Framework Core, and PostgreSQL.
 
-🚀 Getting Started
+## Getting Started
 
-1. 📦 Prerequisites
-Visual Studio 2022
-.NET 8 SDK
-PostgreSQL or Docker
+1. Prerequisites:
+- Visual Studio 2022
+- .NET 8 SDK
+- PostgreSQL with Docker
 
-2. 🐳 Run PostgreSQL with Docker (Recommended)
-Create a docker-compose.yml at the root:
+2. Opening the project:
+- Open Visual Studio Code 2022, and you can choose to clone directly from the repo, or open the .sln file locally.
+- Install Docker for Windows (or your preferred OS)
+- Create a docker-compose.yml at the root (it should have been commited already):
 
 ```
 services:
@@ -28,13 +31,13 @@ volumes:
     pgdata:
 ```
 
-Start container:
+- Start container:
 ```
 docker compose up -d
 ```
 
-3. 🔧 Configure Connection String
-Edit ProductCatalog.API/appsettings.json:
+3. Configure Connection String
+- Edit ProductCatalog.API/appsettings.json:
 ```
 {
   "ConnectionStrings": {
@@ -43,35 +46,30 @@ Edit ProductCatalog.API/appsettings.json:
 }
 ```
 
-4. 🗃 Run EF Core Migration
+4. Run EF Core Migration
 
-Make sure the following file exists:
-📄 ProductCatalog.Infrastructure/Data/CatalogDbContextFactory.cs
+- Make sure the following file exists:
+```ProductCatalog.Infrastructure/Data/CatalogDbContextFactory.cs```
 
-Then run:
-
-# Apply migration
-cd ProductCatalog
-
-```dotnet ef database update \
+- Then run:
+```
+dotnet ef database update \
   --project ProductCatalog.Infrastructure \
   --startup-project ProductCatalog.API \
   --context CatalogDbContext
-  ```
-
-5. ▶ Run the API
-
 ```
-dotnet run --project ProductCatalog.API
-```
-OR
-In Visual Studio 2022, run ProductCatalog.API with https
+
+5 Run the API
+
+```dotnet run --project ProductCatalog.API```
+OR 
+```In Visual Studio 2022, run ProductCatalog.API with https selected```
 
 Open Swagger UI:
+```https://localhost:7105/swagger```
 
-https://localhost:7105/swagger
-
-📬 API Endpoints
+API Endpoints
+```
 POST
 /api/products/generate?count=1000
 Generates fake products
@@ -83,20 +81,23 @@ Returns paginated list of products
 GET
 /api/products/search?q=term
 Filters products dynamically
+```
 
-🧪 Run Tests
-Unit tests are in ProductCatalog.Tests using EF InMemory:
+## Run Tests
+- Unit tests are in ProductCatalog.Tests using EF InMemory:
+```
 cd ProductCatalog.Tests
 dotnet test
+```
 
-💡 Notes
-Follows clean architecture: API → Application → Domain + Infrastructure
-DDD structure supports modular growth
-Pagination supported in /products?page=1&pageSize=25
+## Notes:
+- Follows clean architecture: API → Application → Domain + Infrastructure
+- DDD structure supports modular growth
+- Pagination supported in /products?page=1&pageSize=25
 
-📚 Future Improvements
-More validation, especially query string validation with regards to security
-More unit tests - there is an issue with the Search unit test.
+Future Improvements
+- More validation, especially query string validation with regards to security
+- More unit tests - there is an issue with the Search unit test.
 
 👨‍💻 Author
 Xavier dela Cruz
