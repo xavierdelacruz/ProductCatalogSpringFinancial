@@ -1,46 +1,47 @@
-🛠 Product Catalog API (.NET 8 Backend)
-
+🛠
 This backend is part of the Dynamic Product Catalog Filter project, built using a clean Domain-Driven Design (DDD) architecture with .NET 8 Web API, Entity Framework Core, and PostgreSQL.
-
-
 
 🚀 Getting Started
 
 1. 📦 Prerequisites
+Visual Studio 2022
 .NET 8 SDK
 PostgreSQL or Docker
 
 2. 🐳 Run PostgreSQL with Docker (Recommended)
 Create a docker-compose.yml at the root:
 
+```
 services:
-  postgres:
-    image: postgres:15
-    container_name: productcatalog-db
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: yourpassword
-      POSTGRES_DB: ProductCatalogDb
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
+    postgres:
+        image: postgres:15
+        container_name: productcatalog-db
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: yourpassword
+            POSTGRES_DB: ProductCatalogDb
+        ports:
+            - "5432:5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data
 volumes:
-  pgdata:
+    pgdata:
+```
 
 Start container:
+```
 docker compose up -d
+```
 
 3. 🔧 Configure Connection String
 Edit ProductCatalog.API/appsettings.json:
-
+```
 {
   "ConnectionStrings": {
     "DefaultConnection": "Host=localhost;Port=5432;Database=ProductCatalogDb;Username=postgres;Password=yourpassword"
   }
 }
+```
 
 4. 🗃 Run EF Core Migration
 
@@ -52,14 +53,17 @@ Then run:
 # Apply migration
 cd ProductCatalog
 
-dotnet ef database update \
+```dotnet ef database update \
   --project ProductCatalog.Infrastructure \
   --startup-project ProductCatalog.API \
   --context CatalogDbContext
+  ```
 
 5. ▶ Run the API
 
+```
 dotnet run --project ProductCatalog.API
+```
 OR
 In Visual Studio 2022, run ProductCatalog.API with https
 
