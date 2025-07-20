@@ -64,6 +64,8 @@ dotnet ef database update \
 - Via command line in the project directory
 ```dotnet run --project ProductCatalog.API```
 
+OR
+
 - Via IDE
 ```In Visual Studio 2022, run ProductCatalog.API with https selected```
 
@@ -97,6 +99,10 @@ Filters products dynamically
 cd ProductCatalog.Tests
 dotnet test
 ```
+
+OR 
+
+- IDE can also run tests by right clicking on the ProductCatalog.Tests and choosing Run Tests
 
 ## Notes:
 - Follows clean architecture: API → Application → Domain + Infrastructure
