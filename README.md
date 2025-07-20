@@ -60,14 +60,14 @@ dotnet ef database update \
 5. ▶ Run the API
 
 dotnet run --project ProductCatalog.API
+OR
+In Visual Studio 2022, run ProductCatalog.API with https
 
 Open Swagger UI:
 
-https://localhost:5001/swagger
+https://localhost:7105/swagger
 
 📬 API Endpoints
-
-
 POST
 /api/products/generate?count=1000
 Generates fake products
@@ -81,11 +81,8 @@ GET
 Filters products dynamically
 
 🧪 Run Tests
-
 Unit tests are in ProductCatalog.Tests using EF InMemory:
-
 cd ProductCatalog.Tests
-
 dotnet test
 
 💡 Notes
