@@ -64,8 +64,7 @@ dotnet ef database update \
 ```
 dotnet run --project ProductCatalog.API
 ```
-OR
-In Visual Studio 2022, run ProductCatalog.API with https
+OR ```In Visual Studio 2022, run ProductCatalog.API with https```
 
 Open Swagger UI:
 
