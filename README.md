@@ -1,4 +1,4 @@
-﻿🛠 Product Catalog API (.NET 8 Backend)
+🛠 Product Catalog API (.NET 8 Backend)
 
 This backend is part of the Dynamic Product Catalog Filter project, built using a clean Domain-Driven Design (DDD) architecture with .NET 8 Web API, Entity Framework Core, and PostgreSQL.
 
@@ -23,6 +23,7 @@ PostgreSQL or Docker
 
 Create a docker-compose.yml at the root:
 
+version: '3.9'
 services:
   postgres:
     image: postgres:15
@@ -111,11 +112,24 @@ cd ProductCatalog.Tests
 
 dotnet test
 
-Notes:
+💡 Notes
 
 Follows clean architecture: API → Application → Domain + Infrastructure
+
 DDD structure supports modular growth
+
 Pagination supported in /products?page=1&pageSize=25
 
+Add your own filters, sorting, caching etc.
 
-Author: Xavier dela Cruz
+📚 Future Improvements
+
+Integration tests with Testcontainers
+
+Frontend with React/Expo
+
+Dockerized full app + DB
+
+👨‍💻 Author
+
+Xavier dela Cruz
