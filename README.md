@@ -1,8 +1,8 @@
 # Product Catalog Spring Financial
 
-🛠 This backend is part of the Dynamic Product Catalog Filter project, built using a clean Domain-Driven Design (DDD) architecture with .NET 8 Web API, Entity Framework Core, and PostgreSQL.
+This backend is part of the Dynamic Product Catalog Filter project, built using a clean Domain-Driven Design (DDD) architecture with .NET 8 Web API, Entity Framework Core, and PostgreSQL.
 
-Getting Started
+## Getting Started
 
 1. Prerequisites:
 - Visual Studio 2022
@@ -59,7 +59,7 @@ dotnet ef database update \
   --context CatalogDbContext
 ```
 
-5. Run the API
+## Run the API
 
 ```
 dotnet run --project ProductCatalog.API
@@ -85,14 +85,14 @@ GET
 Filters products dynamically
 ```
 
-Run Tests
+## Run Tests
 - Unit tests are in ProductCatalog.Tests using EF InMemory:
 ```
 cd ProductCatalog.Tests
 dotnet test
 ```
 
-Notes:
+## Notes:
 - Follows clean architecture: API → Application → Domain + Infrastructure
 - DDD structure supports modular growth
 - Pagination supported in /products?page=1&pageSize=25
