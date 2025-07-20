@@ -4,15 +4,15 @@
 
 🚀 Getting Started
 
-1. 📦 Prerequisites
-Visual Studio 2022
-.NET 8 SDK
-PostgreSQL with Docker
+1. 📦 Prerequisites:
+- Visual Studio 2022
+- .NET 8 SDK
+- PostgreSQL with Docker
 
-2. 🐳 Run PostgreSQL with Docker (Recommended)
-Install Docker for Windows (or your preferred OS)
+2. Open Visual Studio. Open the terminal, and run PostgreSQL with Docker (Recommended)
 
-Create a docker-compose.yml at the root (it should have been commited already):
+- Install Docker for Windows (or your preferred OS)
+- Create a docker-compose.yml at the root (it should have been commited already):
 
 ```
 services:
@@ -63,7 +63,7 @@ dotnet ef database update \
   --project ProductCatalog.Infrastructure \
   --startup-project ProductCatalog.API \
   --context CatalogDbContext
-  ```
+```
 
 5. ▶ Run the API
 
