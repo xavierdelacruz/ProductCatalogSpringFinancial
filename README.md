@@ -2,9 +2,9 @@
 
 🛠 This backend is part of the Dynamic Product Catalog Filter project, built using a clean Domain-Driven Design (DDD) architecture with .NET 8 Web API, Entity Framework Core, and PostgreSQL.
 
-🚀 Getting Started
+Getting Started
 
-1. 📦 Prerequisites:
+1. Prerequisites:
 - Visual Studio 2022
 - .NET 8 SDK
 - PostgreSQL with Docker
@@ -36,7 +36,7 @@ Start container:
 docker compose up -d
 ```
 
-3. 🔧 Configure Connection String
+3. Configure Connection String
 - Edit ProductCatalog.API/appsettings.json:
 ```
 {
@@ -46,7 +46,7 @@ docker compose up -d
 }
 ```
 
-4. 🗃 Run EF Core Migration
+4. Run EF Core Migration
 
 - Make sure the following file exists:
 ```ProductCatalog.Infrastructure/Data/CatalogDbContextFactory.cs```
@@ -59,7 +59,7 @@ dotnet ef database update \
   --context CatalogDbContext
 ```
 
-5. ▶ Run the API
+5. Run the API
 
 ```
 dotnet run --project ProductCatalog.API
@@ -69,9 +69,9 @@ In Visual Studio 2022, run ProductCatalog.API with https
 
 Open Swagger UI:
 
-https://localhost:7105/swagger
+```https://localhost:7105/swagger```
 
-📬 API Endpoints
+API Endpoints
 ```
 POST
 /api/products/generate?count=1000
@@ -86,21 +86,21 @@ GET
 Filters products dynamically
 ```
 
-🧪 Run Tests
+Run Tests
 - Unit tests are in ProductCatalog.Tests using EF InMemory:
 ```
 cd ProductCatalog.Tests
 dotnet test
 ```
 
-💡 Notes
-Follows clean architecture: API → Application → Domain + Infrastructure
-DDD structure supports modular growth
-Pagination supported in /products?page=1&pageSize=25
+Notes:
+- Follows clean architecture: API → Application → Domain + Infrastructure
+- DDD structure supports modular growth
+- Pagination supported in /products?page=1&pageSize=25
 
-📚 Future Improvements
-More validation, especially query string validation with regards to security
-More unit tests - there is an issue with the Search unit test.
+Future Improvements
+- More validation, especially query string validation with regards to security
+- More unit tests - there is an issue with the Search unit test.
 
 👨‍💻 Author
 Xavier dela Cruz
