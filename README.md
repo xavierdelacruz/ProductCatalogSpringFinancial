@@ -37,7 +37,7 @@ docker compose up -d
 ```
 
 3. 🔧 Configure Connection String
-Edit ProductCatalog.API/appsettings.json:
+- Edit ProductCatalog.API/appsettings.json:
 ```
 {
   "ConnectionStrings": {
@@ -48,16 +48,10 @@ Edit ProductCatalog.API/appsettings.json:
 
 4. 🗃 Run EF Core Migration
 
-Make sure the following file exists:
-📄 ProductCatalog.Infrastructure/Data/CatalogDbContextFactory.cs
+- Make sure the following file exists:
+```ProductCatalog.Infrastructure/Data/CatalogDbContextFactory.cs```
 
-Then run:
-
-# Apply migration
-```
-cd ProductCatalog
-```
-
+- Then run:
 ```
 dotnet ef database update \
   --project ProductCatalog.Infrastructure \
@@ -93,7 +87,7 @@ Filters products dynamically
 ```
 
 🧪 Run Tests
-Unit tests are in ProductCatalog.Tests using EF InMemory:
+- Unit tests are in ProductCatalog.Tests using EF InMemory:
 ```
 cd ProductCatalog.Tests
 dotnet test
