@@ -111,7 +111,7 @@ OR
 
 Future Improvements
 - More validation, especially query string validation with regards to security
-- More unit tests - there is an issue with the Search unit test.
+- Addition of more search queries, or an improved search query using query strings to fully match objects.
 
 👨‍💻 Author
 Xavier dela Cruz
