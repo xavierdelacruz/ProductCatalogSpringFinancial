@@ -3,11 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using ProductCatalog.Application.Interfaces;
 using ProductCatalog.Domain;
 using ProductCatalog.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductCatalog.Application.Services
 {
@@ -23,7 +18,6 @@ namespace ProductCatalog.Application.Services
         {
             var faker = new Faker<Product>().CustomInstantiator(f => new Product
             (
-                f.IndexFaker + 1,
                 f.Commerce.ProductName(),
                 f.Commerce.ProductDescription(),
                 f.Finance.Amount(10, 1000),
@@ -50,10 +44,13 @@ namespace ProductCatalog.Application.Services
 
         public async Task<IEnumerable<Product>> SearchProductsAsync(string searchQuery)
         {
-            return await _db.Products.Where(p => p.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
-                            p.Description.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
-                            p.Brand.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
-                            p.Category.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+            return await _db.Products
+                .Where(p => EF.Functions.ILike(p.Name, $"%{searchQuery}%") ||
+                            EF.Functions.ILike(p.Description, $"%{searchQuery}%") ||
+                            EF.Functions.ILike(p.Brand, $"%{searchQuery}%") ||
+                            EF.Functions.ILike(p.Category, $"%{searchQuery}%") ||
+                            EF.Functions.ILike(p.SKU, $"%{searchQuery}%") ||
+                            EF.Functions.ILike(p.AvaiabilityStatus, $"%{searchQuery}%"))
                 .ToListAsync();
         }
     }

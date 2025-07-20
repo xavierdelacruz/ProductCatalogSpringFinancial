@@ -2,7 +2,7 @@
 {
     public class Product
     {
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; } 
@@ -15,10 +15,9 @@
 
         private Product() { }
 
-        public Product(int id, string name, string description, decimal price, int stockQuantity, 
+        public Product(string name, string description, decimal price, int stockQuantity, 
                        string brand, string category, string sku, string availabilityStatus, double customerRating)
         {
-            Id = id;
             Name = name;
             Description = description;
             Price = price;

@@ -2,7 +2,6 @@
 using ProductCatalog.Application.Services;
 using ProductCatalog.Domain;
 using ProductCatalog.Infrastructure;
-using System.Threading.Tasks;
 
 namespace ProductCatalog.Tests;
 
@@ -23,9 +22,9 @@ public class ProductServiceTests
         var dbContext = CreateInMemoryDbContext();
 
         dbContext.Products.AddRange(
-            new Product(1, "Product 1", "Description 1", 100, 10, "Brand A", "Category A", "EAN1234567890", "In Stock", 4.5),
-            new Product(2, "Product 2", "Description 2", 200, 20, "Brand B", "Category B", "EAN0987654321", "Out of Stock", 3.5),
-            new Product(3, "Product 3", "Description 3", 300, 30, "Brand C", "Category C", "EAN1122334455", "Pre-order", 5.0)
+            new Product("Product 1", "Description 1", 100, 10, "Brand A", "Category A", "EAN1234567890", "In Stock", 4.5),
+            new Product("Product 2", "Description 2", 200, 20, "Brand B", "Category B", "EAN0987654321", "Out of Stock", 3.5),
+            new Product("Product 3", "Description 3", 300, 30, "Brand C", "Category C", "EAN1122334455", "Pre-order", 5.0)
         );
 
         await dbContext.SaveChangesAsync();
@@ -46,9 +45,9 @@ public class ProductServiceTests
         // Arrange
         var dbContext = CreateInMemoryDbContext();
         dbContext.Products.AddRange(
-            new Product(1, "Product 1", "Description 1", 100, 10, "Brand A", "Category A", "EAN1234567890", "In Stock", 4.5),
-            new Product(2, "Product 2", "Description 2", 200, 20, "Brand B", "Category B", "EAN0987654321", "Out of Stock", 3.5),
-            new Product(3, "Product 3", "Description 3", 300, 30, "Brand C", "Category C", "EAN1122334455", "Pre-order", 5.0)
+            new Product("Product 1", "Description 1", 100, 10, "Brand A", "Category A", "EAN1234567890", "In Stock", 4.5),
+            new Product("Product 2", "Description 2", 200, 20, "Brand B", "Category B", "EAN0987654321", "Out of Stock", 3.5),
+            new Product("Product 3", "Description 3", 300, 30, "Brand C", "Category C", "EAN1122334455", "Pre-order", 5.0)
         );
         await dbContext.SaveChangesAsync();
         var service = new ProductService(dbContext);
