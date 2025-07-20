@@ -13,6 +13,11 @@ namespace ProductCatalog.Application.Services
 {
     public class ProductService : IProductService
     {
+        public ProductService(CatalogDbContext db)
+        {
+            _db = db;
+        }
+
         private readonly CatalogDbContext _db;
         public async Task GenerateProductsAsync(int count)
         {
@@ -24,7 +29,7 @@ namespace ProductCatalog.Application.Services
                 f.Finance.Amount(10, 1000),
                 f.Random.Int(0, 100),
                 f.Company.CompanyName(),
-                f.Commerce.Categories(1).FirstOrDefault(),
+                f.Commerce.Categories(1)[0],
                 f.Commerce.Ean13(),
                 f.PickRandom(new[] { "In Stock", "Out of Stock", "Pre-order" }),
                 f.Random.Double(1, 5)
