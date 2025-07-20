@@ -8,14 +8,22 @@ namespace ProductCatalog.Application.Services
 {
     public class ProductService : IProductService
     {
+        private readonly CatalogDbContext _db;
+
         public ProductService(CatalogDbContext db)
         {
             _db = db;
         }
 
-        private readonly CatalogDbContext _db;
         public async Task GenerateProductsAsync(int count)
         {
+
+            if (count < 1)
+                throw new ArgumentOutOfRangeException(nameof(count), "Count must be at least 1.");
+
+            if (count > 1000)
+                throw new ArgumentOutOfRangeException(nameof(count), "Count cannot exceed 1000.");
+
             var faker = new Faker<Product>().CustomInstantiator(f => new Product
             (
                 f.Commerce.ProductName(),
@@ -42,15 +50,29 @@ namespace ProductCatalog.Application.Services
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> SearchProductsAsync(string searchQuery)
+        public async Task<IEnumerable<Product>> SearchProductsAsync(
+            string searchQuery,
+            int page, 
+            int pageSize)
         {
-            return await _db.Products
-                .Where(p => EF.Functions.ILike(p.Name, $"%{searchQuery}%") ||
-                            EF.Functions.ILike(p.Description, $"%{searchQuery}%") ||
-                            EF.Functions.ILike(p.Brand, $"%{searchQuery}%") ||
-                            EF.Functions.ILike(p.Category, $"%{searchQuery}%") ||
-                            EF.Functions.ILike(p.SKU, $"%{searchQuery}%") ||
-                            EF.Functions.ILike(p.AvaiabilityStatus, $"%{searchQuery}%"))
+            var queryable = _db.Products.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                queryable = queryable.Where(p =>
+                    p.Name.ToLower().Contains(searchQuery) ||
+                    p.Description.ToLower().Contains(searchQuery) ||
+                    p.Brand.ToLower().Contains(searchQuery) ||
+                    p.Category.ToLower().Contains(searchQuery) ||
+                    p.SKU.ToLower().Contains(searchQuery) ||
+                    p.AvaiabilityStatus.ToLower().Contains(searchQuery)
+                );
+            }
+
+            return await queryable
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
         }
     }
