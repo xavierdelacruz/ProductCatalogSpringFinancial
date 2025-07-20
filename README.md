@@ -64,6 +64,7 @@ dotnet ef database update \
 ```dotnet run --project ProductCatalog.API```
 OR 
 ```In Visual Studio 2022, run ProductCatalog.API with https selected```
+![alt text](image.png)
 
 Open Swagger UI:
 ```https://localhost:7105/swagger```
@@ -82,6 +83,8 @@ GET
 /api/products/search?q=term
 Filters products dynamically
 ```
+
+- Swagger's UI should show this when run: ![alt text](image-1.png)
 
 ## Run Tests
 - Unit tests are in ProductCatalog.Tests using EF InMemory:
